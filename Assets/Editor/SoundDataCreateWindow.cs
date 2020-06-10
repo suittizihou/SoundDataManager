@@ -5,7 +5,7 @@ using UnityEditor;
 using System.Text.RegularExpressions;
 using UnityEngine.Rendering;
 
-public class SoundDataCreatorWindow : EditorWindow
+public class SoundDataCreateWindow : EditorWindow
 {
     private AudioClip[] audios;
     private List<string> enumElements = new List<string>();
@@ -13,10 +13,10 @@ public class SoundDataCreatorWindow : EditorWindow
     private string enumFileSavePath = "";
     private string assetDataSavePath = "";
 
-    [MenuItem("Window/SoundDataCreator")]
+    [MenuItem("Window/SoundDataCreate")]
     private static void Open()
     {
-        GetWindow<SoundDataCreatorWindow>("SoundDataCreator");
+        GetWindow<SoundDataCreateWindow>("SoundDataCreate");
     }
 
     private void OnGUI()

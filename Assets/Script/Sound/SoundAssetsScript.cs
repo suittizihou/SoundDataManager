@@ -9,7 +9,7 @@ using UnityEditor;
 
 public class SoundAssetsScript : ScriptableObject
 {
-    private AudioClip[] soundDatas;
+    [SerializeField] private AudioClip[] soundDatas;
 
     public SoundAssetsScript(AudioClip[] soundData)
     {
@@ -31,15 +31,15 @@ public class SoundAssetsScript : ScriptableObject
             {
                 var soundAssets = target as SoundAssetsScript;
 
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    GUILayout.Label("Enum名");
+                    GUILayout.FlexibleSpace();
+                    GUILayout.Label("サウンドデータ");
+                }
+
                 foreach (var audio in soundAssets.soundDatas)
                 {
-                    using(new EditorGUILayout.HorizontalScope())
-                    {
-                        GUILayout.Label("Enum名");
-                        GUILayout.FlexibleSpace();
-                        GUILayout.Label("サウンドデータ");
-                    }
-
                     using (new EditorGUILayout.HorizontalScope(GUI.skin.box))
                     {
                         EditorGUILayout.LabelField(audio.name);
@@ -50,6 +50,8 @@ public class SoundAssetsScript : ScriptableObject
                     }
                 }
             }
+
+            EditorUtility.SetDirty(this);
         }
     }
 #endif
